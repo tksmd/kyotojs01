@@ -12,3 +12,17 @@ span.strong {
     font-size : 200%;
 }
 
+div#demo1, div#demo2, div#demo3, div#demo4 {
+    height : 360px;
+    text-align : center;
+}
+
+button {
+    width : 200px;
+    height : 40px;
+    font-weight: bold;
+}
+
+svg {
+    border : 1px dotted #ddd;
+}

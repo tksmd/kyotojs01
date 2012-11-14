@@ -38,7 +38,7 @@
 				<section>
 					<h1>Raphaël.js</h1>
 					<p style='padding:32px 0px;'>を使ってみた</p>
-					<h3>kyoto.js #1</h3>					
+					<h3>kyoto.js #1</h3>
 					<p style='padding-top:20px;'>
 					  <small>by SOMEDA Takashi</small>
 					  <small>(<a href='http://d.hatena.ne.jp/tksmd'>id:tksmd</a> / <a href="http://twitter.com/tksmd">@tksmd</a>)</small>
@@ -69,14 +69,17 @@
 				    <h2>Raphaël.js とは</h2>
 				    <ul>
 				      <li><a href='http://raphaeljs.com/'>raphaeljs.com</a></li>
-				      <li>ベクター画像を扱うためのJSのライブラリ</li>
+				      <li>ベクター画像を扱うためのライブラリ</li>
 				      <li>MITライセンス</li>
-				      <li>最新版 2.1.0 (2008年頃からGitHubには存在)</li>
+				      <li>最新版 2.1.0 (2008年頃からGitHubに存在)</li>
 				      <li><a href='http://www.sencha.com/'>Sencha Labs</a>の一つ</li>
 				    </ul>
 				  </section>
 				  <section>
 				    <h2>サンプル</h2>
+				    <a class="image" href="http://raphaeljs.com/" target="_blank">
+				      <img src='https://cacoo.com/diagrams/MvWW8EhU8o4WDaby-E1C21.png'>
+				    </a>
 				  </section>
 				  <section>
 				    <h2>特徴</h2>
@@ -99,21 +102,88 @@
 				<section>
 				  <section>
 				    <h2>何に使ったか</h2>
+				    <p>Backlog の Git 機能のネットワーク図</p>
+				    <img src='https://cacoo.com/diagrams/MvWW8EhU8o4WDaby-18C5C.png'>
 				  </section>
 				  <section>
-				    <h2>他の選択肢</h2>
-				    <ul>
-				      <li>HTML5 Canvas</li>
-				      <li>graphvizをどうにか</li>
-				      <li>チャートライブラリ沢山</li>
-				    </ul>
+				    <h2>サルGitもよろしく!</h2>
+				    <p>入門ドキュメントも作りました</p>
+				    <a class='image' href='http://www.backlog.jp/git-guide/'>
+				      <img src='http://www.backlog.jp/blog/2012/07/11/bnr_gitguide.png'>
+				    </a>
+				    <p style='padding-top:40px;' class='fragment'><span class='strong'>ePub版も公開してます！</span></p>
+				  </section>
+				</section>
+
+				<section>
+				  <h2>他の選択肢</h2>
+				  <ul>
+				    <li>HTML5 Canvas</li>
+				    <li>graphvizをどうにか</li>
+				    <li>チャートライブラリ沢山</li>
+				  </ul>
+				</section>
+
+				<section>
+				  <section>
+				    <h2>コード - 描画する</h2>
+				    <p>領域の真ん中に白抜きの円を描く</p>
+					<pre><code contenteditable>
+var r = Raphael('demo1',360,360);
+var circle = r.circle(180, 180, 20).attr({
+  "fill": "#fff",
+  "stroke":"#f00",
+  "stroke-width":3
+});
+					</code></pre>
+				  </section>
+				  <section>
+				    <h2>デモ - 描画する</h2>
+				    <div id="demo1"></div>
+				    <button id="demo1go">えい！</button>
 				  </section>
 				</section>
 
 				<section>
 				  <section>
-				    <h2>サンプル - 丸書いてみる</h2>
+				    <h2>コード - イベントる</h2>
+				    <p>ホバーした時に色変える</p>
+					<pre><code contenteditable>
+circle.hover(function(){
+  this.attr("fill","#f00");
+}, function(){
+  this.attr("fill","#fff");
+});
+					</code></pre>
 				  </section>
+				  <section>
+				    <h2>デモ - イベントる</h2>
+				    <div id="demo2"></div>
+				    <button id="demo2go">えい！</button>
+				  </section>
+				</section>
+
+				<section>
+				  <section>
+				    <h2>コード - アニメる</h2>
+				    <p>クリックしたら移動する</p>
+					<pre><code contenteditable>
+circle.click(function(){
+  this.animate({transform:'T-140,0', fill:'#fff'},200,'linear');
+});
+					</code></pre>
+				  </section>
+				  <section>
+				    <h2>デモ - アニメる</h2>
+				    <div id="demo3"></div>
+				    <button id="demo3go">えい！</button>
+				  </section>
+				</section>
+
+            			<section>
+				  <h2>デモ - まとめる</h2>
+				  <div id="demo4"></div>
+				  <button id="demo4go">えい！</button>
 				</section>
 
 				<section>
@@ -121,6 +191,7 @@
 				  <ul>
 				    <li>ブラウザ意識せずに書けた</li>
 				    <li>ノード出来るので何かとやりやすい</li>
+				    <li>そこそこjQueryライク</li>
 				  </ul>
 				</section>
 
@@ -131,147 +202,15 @@
 				    <li>FFだとSVGちょっと遅い</li>
 				  </ul>
 				</section>
-				
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-							<section data-markdown>
-							  ## Markdown support
-
-							  For those of you who like that sort of thing.
-							  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-							</section>
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This lets you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#/7/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#/7/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#/7/0" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
 
 				<section>
 					<h2>参考リンク</h2>
 					<ul>
 						<li><a href="http://raphaeljs.com/">本家</a></li>
 						<li><a href="http://g.raphaeljs.com/">gRaphaël</a></li>
-						<li><a href="">今日のプレゼン</a></li>
+						<li><a href="https://github.com/tksmd/kyotojs01">今日のプレゼン</a></li>
 					</ul>
 				</section>
-
 
 				<section>
 					<h1>Thanks!</h1>
@@ -284,6 +223,64 @@ function linkify( selector ) {
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
+		<script src="lib/raphael.js"></script>
+		<script src="lib/jquery-1.8.2.min.js"></script>
+		
+		<script type='text/javascript'>
+		  jQuery(function(){
+		    jQuery('#demo1go').one('click',function(){
+                      var r = Raphael('demo1',360,360);
+		      var circle = r.circle(180, 180, 20).attr({
+                        "fill": "#fff",
+                        "stroke":"#f00",
+		        "stroke-width":3
+                      });
+                      jQuery(this).attr("disabled","disabled");
+		    });
+
+		    jQuery('#demo2go').one('click',function(){
+                      var r = Raphael('demo2',360,360);
+		      var circle = r.circle(180, 180, 20).attr({
+                        "fill": "#fff",
+                        "stroke":"#f00",
+		        "stroke-width":3
+                      });
+
+		      circle.hover(function(){
+                        this.attr("fill","#f00");
+                      }, function(){
+                        this.attr("fill","#fff");
+                      });
+
+                      jQuery(this).attr("disabled","disabled");
+
+		    });
+
+		    jQuery('#demo3go').one('click',function(){
+                      var r = Raphael('demo3',360,360);
+		      var circle = r.circle(180, 180, 20).attr({
+                        "fill": "#fff",
+                        "stroke":"#f00",
+		        "stroke-width":3,
+		        "cursor":"pointer"
+                      });
+
+		      circle.hover(function(){
+                        this.attr("fill","#f00");
+                      }, function(){
+                        this.attr("fill","#fff");
+                      });
+
+		      circle.click(function(){
+                        this.animate({transform:'T-140,0', fill:'#fff'},200,'linear');
+		      });
+
+                      jQuery(this).attr("disabled","disabled");
+
+		    });
+
+		  });
+		</script>
 
 		<script>
 
