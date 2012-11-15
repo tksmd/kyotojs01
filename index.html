@@ -181,7 +181,7 @@ circle.click(function(){
 				</section>
 
             			<section>
-				  <h2>デモ - まとめる</h2>
+				  <h2>デモ - がっちゃんこ</h2>
 				  <div id="demo4"></div>
 				  <button id="demo4go">えい！</button>
 				</section>
@@ -189,17 +189,18 @@ circle.click(function(){
 				<section>
 				  <h2>良かったこと</h2>
 				  <ul>
-				    <li>ブラウザ意識せずに書けた</li>
-				    <li>ノード出来るので何かとやりやすい</li>
+				    <li>ブラウザ意識せず書ける</li>
+				    <li>ノードが生成されるのでデバッグしやすい</li>
 				    <li>そこそこjQueryライク</li>
 				  </ul>
 				</section>
 
 				<section>
-				  <h2>残念だった事</h2>
+				  <h2>残念だったこと</h2>
 				  <ul>
-				    <li>VML遅い</li>
-				    <li>FFだとSVGちょっと遅い</li>
+				    <li>ほどほどの抽象化レベル (path 周りとか)</li>
+				    <li>VML遅い...</li>
+				    <li>FFだとSVGちょい遅い...</li>
 				  </ul>
 				</section>
 
@@ -207,6 +208,7 @@ circle.click(function(){
 					<h2>参考リンク</h2>
 					<ul>
 						<li><a href="http://raphaeljs.com/">本家</a></li>
+						<li><a href="http://www.w3.org/TR/SVG/">W3C SVG</a></li>
 						<li><a href="http://g.raphaeljs.com/">gRaphaël</a></li>
 						<li><a href="https://github.com/tksmd/kyotojs01">今日のプレゼン</a></li>
 					</ul>
@@ -214,7 +216,6 @@ circle.click(function(){
 
 				<section>
 					<h1>Thanks!</h1>
-					<h3>BY SOMEDA Takashi</h3>
 				</section>
 
 			</div>
@@ -255,6 +256,7 @@ circle.click(function(){
                       jQuery(this).attr("disabled","disabled");
 
 		    });
+		    jQuery('#demo2go').click();
 
 		    jQuery('#demo3go').one('click',function(){
                       var r = Raphael('demo3',360,360);
@@ -278,6 +280,56 @@ circle.click(function(){
                       jQuery(this).attr("disabled","disabled");
 
 		    });
+		    jQuery('#demo3go').click();
+
+		    jQuery('#demo4go').one('click',function(){
+                      var r = Raphael('demo4',360,360);
+		      var circle = r.circle(180, 180, 20).attr({
+                        "fill": "#fff",
+                        "stroke":"#f00",
+		        "stroke-width":3,
+		        "cursor":"pointer"
+                      });
+
+		      circle.hover(function(){
+                        this.attr("fill","#f00");
+                      }, function(){
+                        this.attr("fill","#fff");
+                      });
+
+                      var cloneCircle = function(src, ts, callback){
+		           src.clone().attr({"fill":"#f00"}).animate({transform:ts, fill:'#fff'},500,'linear',callback);
+                      }
+
+		      circle.click(function(){
+		        var self = this;
+                        self.animate({transform:'T-140,0', fill:'#fff'},200,'linear',function(){
+                           cloneCircle(self,'T0,0',function(){
+                             var cloned = this;
+                             r.path('M60,180,L70,180').attr({
+                                "stroke" : "#f00",
+                                "stroke-width" : 2
+		             }).animate({'path':'M60,180,L160,180'},200,'linear',function(){
+                               cloneCircle(cloned,'T140,140',function(){
+                                 r.path('M196,170,L196,170').attr({
+                                  "stroke" : "#f00",
+                                  "stroke-width" : 2
+                                 }).animate({'path':'M196,170,L304,50'},200,'linear');
+                               });
+                               cloneCircle(cloned,'T140,-140',function(){
+                                 r.path('M196,190,L196,190').attr({
+                                  "stroke" : "#f00",
+                                  "stroke-width" : 2
+                                 }).animate({'path':'M196,190,L304,310'},200,'linear');
+                               });
+		             });
+                           });
+		        });
+		      });
+
+                      jQuery(this).attr("disabled","disabled");
+		    });
+		    jQuery('#demo4go').click();
 
 		  });
 		</script>
